@@ -74,6 +74,13 @@ public class AdminDashboardView extends JFrame {
 		contentPane.add(btnEmp);
 		
 		JButton btnCottages = new JButton("Cottages");
+		btnCottages.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CottagesAdminModule cam = new CottagesAdminModule();
+				setVisible(false);
+				cam.setVisible(true);
+			}
+		});
 		btnCottages.setFont(new Font("Stencil", Font.PLAIN, 20));
 		btnCottages.setBounds(244, 205, 193, 43);
 		contentPane.add(btnCottages);

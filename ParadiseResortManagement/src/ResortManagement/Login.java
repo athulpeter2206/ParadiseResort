@@ -122,6 +122,11 @@ public class Login extends JFrame {
 							adv.setVisible(true);
 							
 						}
+						else if(empType==2) {
+							EmployeeDashboard ED = new EmployeeDashboard();
+							setVisible(false);
+							ED.setVisible(true);
+						}
 					}else {
 						JOptionPane.showMessageDialog(frame, "Invalid Username or Password!");
 					}

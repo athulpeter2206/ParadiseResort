@@ -1,0 +1,18 @@
+create table res_customer(booking_Id varchar2(20) primary key, Cust_Name varchar2(30), Address varchar2(30), PhoneNo varchar2(12), IDProofType varchar2(15), IDNo varchar2(20), CheckInDate date, CheckOutDate date, NoOfPersons number,room_charges number);
+
+create table cottages(room_no varchar2(10) primary key,Room varchar2(25), Cost Number,Availability varchar2(10),bookingId varchar2(20) references booking);
+
+create table bill_breakup(Bill_B_Id varchar2(20),BillId varchar2(20) references bill, RoomNo varchar2(20),ttlprice  number,noofdays number);
+
+insert into cottages values('100','Single Room',1000,'Yes','');
+
+insert into cottages values('101','Single Room',1000,'Yes','');
+
+insert into cottages values('102','Double Room',1000,'Yes','');
+
+insert into cottages values('103','Luxury Suite',1000,'Yes','');
+
+insert into cottages values('104','King Size Room',1000,'Yes','');
+
+insert into customer values('1','XXXXXX','Asset Homes Kochi','6325897456','Aadhar','444456985321','25-MAR-23','26-MAR-23',5,50000);
+

@@ -1,0 +1,9 @@
+Enum -- Room Type in Cottages
+-None- -0
+Single Room -1
+Double Room - 2
+Quad Room -3
+Queen Sized Room -4
+King sized Room -5
+Twin Room -6
+Luxury Suite -7

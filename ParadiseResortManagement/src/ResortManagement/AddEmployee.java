@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class AddEmployee extends JFrame {
 	String emp_id_db;
@@ -145,7 +146,7 @@ public class AddEmployee extends JFrame {
 					}catch(Exception e2) {
 						System.out.println(e2);
 					
-				}
+					}
 }
 				
 			}
@@ -171,6 +172,15 @@ public class AddEmployee extends JFrame {
 		contentPane.add(ClearBtn);
 		
 		JButton Btn_cancel = new JButton("Cancel");
+		Btn_cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EmployeeAdminModule eam = new EmployeeAdminModule();
+				setVisible(false);
+				eam.setVisible(true);
+				
+			}
+		});
 		Btn_cancel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		Btn_cancel.setBounds(548, 348, 129, 28);
 		contentPane.add(Btn_cancel);
@@ -186,6 +196,11 @@ public class AddEmployee extends JFrame {
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnLogout.setBounds(586, 10, 120, 24);
 		contentPane.add(btnLogout);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("E:\\Programming\\Java\\ParadiseResortManagement\\Images\\RS2Resized.jpg"));
+		lblNewLabel.setBounds(0, 0, 716, 458);
+		contentPane.add(lblNewLabel);
 		
 	}
 	public String fetchEmpId() {
@@ -209,5 +224,4 @@ public class AddEmployee extends JFrame {
 		}
 		
 	}
-
 }

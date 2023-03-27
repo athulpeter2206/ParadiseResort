@@ -71,6 +71,14 @@ public class EmployeeAdminModule extends JFrame {
 		contentPane.add(EmpAdd);
 		
 		JButton btnUpdateEmployee = new JButton("Update Employee");
+		btnUpdateEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateEmployee el = new UpdateEmployee();
+				setVisible(false);
+				el.setVisible(true);
+				
+			}
+		});
 		btnUpdateEmployee.setBackground(new Color(170, 223, 240));
 		btnUpdateEmployee.setFont(new Font("Stencil", Font.PLAIN, 20));
 		btnUpdateEmployee.setBounds(251, 254, 218, 43);
