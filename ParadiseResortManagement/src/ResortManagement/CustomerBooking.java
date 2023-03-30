@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,7 +20,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
+
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 public class CustomerBooking extends JFrame {
 	static CustomerBooking frame = new CustomerBooking();
@@ -135,6 +139,13 @@ public class CustomerBooking extends JFrame {
 		txtCheckInDate.setBounds(159, 317, 252, 34);
 		contentPane.add(txtCheckInDate);
 		
+//		UtilDateModel model = new UtilDateModel();
+//		JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
+//		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, null);
+//		datePicker.setVisible(true);
+//		datePicker.setBounds(159, 317, 252, 34);
+//		contentPane.add(datePicker);
+		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Check-In:");
 		lblNewLabel_3_1_1.setForeground(Color.BLACK);
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -183,17 +194,7 @@ public class CustomerBooking extends JFrame {
 		txtNoOfPeople.setBounds(590, 202, 252, 34);
 		contentPane.add(txtNoOfPeople);
 		
-//		JLabel lblAddress_1 = new JLabel("Total:");
-//		lblAddress_1.setForeground(Color.BLACK);
-//		lblAddress_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-//		lblAddress_1.setBounds(542, 134, 49, 34);
-//		contentPane.add(lblAddress_1);
-//		
-//		txtTotal = new JTextField();
-//		txtTotal.setFont(new Font("Tahoma", Font.BOLD, 13));
-//		txtTotal.setColumns(10);
-//		txtTotal.setBounds(601, 134, 252, 34);
-//		contentPane.add(txtTotal);
+
 		
 		JButton AddBookingBtn = new JButton("Select Rooms");
 		AddBookingBtn.addActionListener(new ActionListener() {
@@ -216,7 +217,7 @@ public class CustomerBooking extends JFrame {
 						AddBookingBtn.disable();
 					}
 					else if(j>=RoomsNeeded){
-						int i = st.executeUpdate("insert into res_customer values('"+String.valueOf(bidb)+"','"+txt_CustName.getText()+"','"+txt_Address.getText()+"','"+txt_Mob.getText()+"','"+cb_IDtype.getItemAt(cb_IDtype.getSelectedIndex())+"','"+txt_IdNo.getText()+"','"+txtCheckInDate.getText()+"','"+txtCheckOutDate.getText()+"','"+txtNoOfPeople.getText()+"','')");
+						int i = st.executeUpdate("insert into res_customer values('"+String.valueOf(bidb)+"','"+txt_CustName.getText()+"','"+txt_Address.getText()+"','"+txt_Mob.getText()+"','"+cb_IDtype.getItemAt(cb_IDtype.getSelectedIndex())+"','"+txt_IdNo.getText()+"','"+txtCheckInDate.getText()+"','"+txtCheckOutDate.getText()+"','"+txtNoOfPeople.getText()+"','',0)");
 						
 						System.out.println("Rows Inserted : "+i);
 						
@@ -224,11 +225,11 @@ public class CustomerBooking extends JFrame {
 						JOptionPane.showMessageDialog(frame, "Select Rooms for BookingId :"+bidb);
 						
 						RoomSelect rst = new RoomSelect();
-						rst.fetchBookingId(booking_id_db,RoomsNeeded);
+						rst.fetchBookingId(String.valueOf(bidb),RoomsNeeded);
 						setVisible(false);
 						rst.setVisible(true);
 					}
-				
+					con.close();
 				}catch(Exception e2) {
 					System.out.println(e2);
 				
@@ -241,11 +242,30 @@ public class CustomerBooking extends JFrame {
 		contentPane.add(AddBookingBtn);
 		
 		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txt_CustName.setText("");
+				cb_IDtype.setSelectedIndex(-1);
+				txt_IdNo.setText("");
+				txtCheckInDate.setText("");
+				txtCheckOutDate.setText("");
+				txt_Address.setText("");
+				txtNoOfPeople.setText("");
+				txt_Mob.setText("");
+			}
+		});
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnClear.setBounds(627, 314, 129, 28);
 		contentPane.add(btnClear);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmployeeDashboard ev = new EmployeeDashboard();
+				setVisible(false);
+				ev.setVisible(true);
+			}
+		});
 		btnCancel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnCancel.setBounds(777, 314, 129, 28);
 		contentPane.add(btnCancel);
@@ -273,7 +293,7 @@ public class CustomerBooking extends JFrame {
 			lblNewLabel.setIcon(new ImageIcon("E:\\Programming\\Java\\ParadiseResortManagement\\Images\\ResortImg1Resized.jpg"));
 			lblNewLabel.setBounds(0, 0, 921, 524);
 			contentPane.add(lblNewLabel);
-			
+			con.close();
 		}catch(Exception e1) {
 			System.out.println(e1);
 		}	

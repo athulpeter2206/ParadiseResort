@@ -16,10 +16,6 @@ import javax.swing.ImageIcon;
 public class CottagesAdminModule extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,10 +28,6 @@ public class CottagesAdminModule extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public CottagesAdminModule() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 727, 484);

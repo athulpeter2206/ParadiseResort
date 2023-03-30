@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 
 public class RoomSelect extends JFrame {
 	String BookingId;
+	String billId;
 	static RoomSelect frame = new RoomSelect();
 	JComboBox cb1_2 = new JComboBox();
 	JComboBox cb1 = new JComboBox();
@@ -42,7 +43,6 @@ public class RoomSelect extends JFrame {
 	private JPanel contentPane;
 	private JTextField txt_BookingId;
 	private JTextField txtRoomsReq;
-	private final JLabel lblNewLabel = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -130,6 +130,7 @@ public class RoomSelect extends JFrame {
 						
 						cb1_2.addItem(rs.getString(1));
 					}
+					con.close();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -160,17 +161,7 @@ public class RoomSelect extends JFrame {
 					System.out.println("Rows Updated"+i);
 					
 					JOptionPane.showMessageDialog(frame, "Room Booked Successfully - BookingId :"+BookingId);
-					
-					ResultSet rs = st.executeQuery("select COST from cottages where ROOM_NO='"+RoomNo+"'");
-					rs.next();
-					String Cost = rs.getString(1);
-					double billId=Math.random();
-					int j = st.executeUpdate("insert into bill values ('"+billId+"','"+BookingId+"','')");
-					double billBreakUpId = Math.random();
-				
-					int k = st.executeUpdate("insert into bill_breakup values('"+billBreakUpId+"','"+billId+"','"+RoomNo+"','"+Cost+"','')");
-					System.out.println("Bill Generated"+k);
-					System.out.println("Rows Updated"+i);
+					con.close();
 				} catch (Exception e2) {
 						System.out.println(e2);
 				}
@@ -197,6 +188,7 @@ public class RoomSelect extends JFrame {
 						
 						cb2_2.addItem(rs.getString(1));
 					}
+					con.close();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -231,6 +223,7 @@ public class RoomSelect extends JFrame {
 					System.out.println("Rows Updated"+i);
 					
 					JOptionPane.showMessageDialog(frame, "Room Booked Successfully - BookingId :"+BookingId);
+					con.close();
 				} catch (Exception e2) {
 						System.out.println(e2);
 				}
@@ -262,6 +255,7 @@ public class RoomSelect extends JFrame {
 						
 						cb3_2.addItem(rs.getString(1));
 					}
+					con.close();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -297,6 +291,7 @@ public class RoomSelect extends JFrame {
 					System.out.println("Rows Updated"+i);
 					
 					JOptionPane.showMessageDialog(frame, "Room Booked Successfully - BookingId :"+BookingId);
+					con.close();
 				} catch (Exception e2) {
 						System.out.println(e2);
 				}
@@ -328,6 +323,7 @@ public class RoomSelect extends JFrame {
 						
 						cb4_2.addItem(rs.getString(1));
 					}
+					con.close();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -363,6 +359,7 @@ public class RoomSelect extends JFrame {
 					System.out.println("Rows Updated"+i);
 					
 					JOptionPane.showMessageDialog(frame, "Room Booked Successfully - BookingId :"+BookingId);
+					con.close();
 				} catch (Exception e2) {
 						System.out.println(e2);
 				}
@@ -394,6 +391,7 @@ public class RoomSelect extends JFrame {
 						
 						cb5_2.addItem(rs.getString(1));
 					}
+					con.close();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -429,6 +427,7 @@ public class RoomSelect extends JFrame {
 					System.out.println("Rows Updated"+i);
 					
 					JOptionPane.showMessageDialog(frame, "Room Booked Successfully - BookingId :"+BookingId);
+					con.close();
 				} catch (Exception e2) {
 						System.out.println(e2);
 				}
@@ -451,9 +450,22 @@ public class RoomSelect extends JFrame {
 		txtRoomsReq.setColumns(10);
 		txtRoomsReq.setBounds(288, 10, 70, 34);
 		contentPane.add(txtRoomsReq);
+		
+		JButton BackBtn = new JButton("Back");
+		BackBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmployeeDashboard ed = new EmployeeDashboard();
+				setVisible(false);
+				ed.setVisible(true);
+			}
+		});
+		BackBtn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		BackBtn.setBounds(585, 367, 85, 33);
+		contentPane.add(BackBtn);
+		
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("E:\\Programming\\Java\\ParadiseResortManagement\\Images\\RS2Resized.jpg"));
 		lblNewLabel.setBounds(0, 0, 709, 446);
-		
 		contentPane.add(lblNewLabel);
 		
 		try {
@@ -471,7 +483,7 @@ public class RoomSelect extends JFrame {
 				cb4.addItem(rs.getString(1));
 				cb_5.addItem(rs.getString(1));
 			}
-			
+			con.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -520,5 +532,4 @@ public class RoomSelect extends JFrame {
 		}
 		
 	}
-
 }

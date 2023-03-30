@@ -196,11 +196,6 @@ public class AddCottage extends JFrame {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("E:\\Programming\\Java\\ParadiseResortManagement\\Images\\RS2Resized.jpg"));
 		lblNewLabel.setBounds(0, 0, 712, 448);
-		contentPane.add(lblNewLabel);
-		
-
-		
-
-		
+		contentPane.add(lblNewLabel);	
 	}
 }

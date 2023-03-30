@@ -39,10 +39,7 @@ public class UpdateEmployee extends JFrame {
 	private JTextField txt_address;
 	private JTextField txt_EmpName;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,9 +53,6 @@ public class UpdateEmployee extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public UpdateEmployee() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 951, 530);

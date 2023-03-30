@@ -13,12 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 public class AdminDashboardView extends JFrame {
-
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,10 +26,6 @@ public class AdminDashboardView extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public AdminDashboardView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 731, 487);
@@ -86,6 +77,14 @@ public class AdminDashboardView extends JFrame {
 		contentPane.add(btnCottages);
 		
 		JButton btnReport = new JButton("Report");
+		btnReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ReportHomePage rp = new ReportHomePage();
+				setVisible(false);
+				rp.setVisible(true);
+			}
+		});
 		btnReport.setFont(new Font("Stencil", Font.PLAIN, 20));
 		btnReport.setBounds(244, 270, 193, 43);
 		contentPane.add(btnReport);
@@ -95,5 +94,4 @@ public class AdminDashboardView extends JFrame {
 		lblNewLabel_1.setBounds(0, 0, 717, 450);
 		contentPane.add(lblNewLabel_1);
 	}
-
 }

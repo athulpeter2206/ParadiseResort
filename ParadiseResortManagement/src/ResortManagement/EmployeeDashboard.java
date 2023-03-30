@@ -16,10 +16,6 @@ import javax.swing.ImageIcon;
 public class EmployeeDashboard extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,10 +28,6 @@ public class EmployeeDashboard extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public EmployeeDashboard() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 724, 484);
@@ -64,6 +56,15 @@ public class EmployeeDashboard extends JFrame {
 		contentPane.add(btn_Booking);
 		
 		JButton btnBilling = new JButton("Billing");
+		btnBilling.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				BillingDashBoard bd = new BillingDashBoard();
+				setVisible(false);
+				bd.setVisible(true);
+				
+			}
+		});
 		btnBilling.setFont(new Font("Stencil", Font.PLAIN, 20));
 		btnBilling.setBackground(new Color(170, 223, 240));
 		btnBilling.setBounds(226, 213, 218, 43);

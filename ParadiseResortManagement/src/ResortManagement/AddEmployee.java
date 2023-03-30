@@ -27,10 +27,6 @@ public class AddEmployee extends JFrame {
 	private JTextField txt_Designation;
 	private JTextField txt_mobNo;
 	private JTextField txt_Salary;
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,10 +39,6 @@ public class AddEmployee extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	public AddEmployee() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 730, 484);
